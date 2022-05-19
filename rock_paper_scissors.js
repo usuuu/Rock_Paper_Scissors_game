@@ -1,3 +1,44 @@
+
+const playerWins = "Congratulations you won!"
+const buttons = document.querySelectorAll('button');
+let playerScore = 0;
+let computerScore = 0; 
+
+const container = document.querySelector('#result');
+
+const new_div = document.createElement('div');
+new_div.classList.add('new_div');
+container.appendChild(new_div); 
+
+const cScore = document.querySelector('#computers_score');
+const comp_Score = document.createElement('p');
+comp_Score.classList.add('comp_Score');
+
+comp_Score.textContent = computerScore;
+
+cScore.appendChild(comp_Score); 
+
+const pScore = document.querySelector('#players_score');
+
+const play_Score = document.createElement('p');
+
+play_Score.classList.add('play_Score');
+
+play_Score.textContent = playerScore;
+
+pScore.appendChild(play_Score); 
+
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    
+    new_div.textContent = playRound(button.id,computerPlay());
+   });
+});
+
 function computerPlay(){
     const threeOptions = ["Rock", "Paper", "Scissors"];
     random_number = Math.floor(Math.random()*threeOptions.length);
@@ -5,56 +46,39 @@ function computerPlay(){
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-
-    if(playerSelection == "rock" &&  computerSelection == "scissors" || playerSelection == "paper" &&  computerSelection == "rock" || playerSelection == "scissors" &&  computerSelection == "paper"){  
+    if(playerScore == 5)
+    {
+        playerScore = 0;
+        computerScore = 0;
+        return "You won!";
         
-        return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ playerWins
-
     }
-    else if(playerSelection == "rock" && computerSelection == "paper" || playerSelection == "paper" &&  computerSelection == "scissors" || playerSelection == "scissors" &&  computerSelection == "rock"){ 
-        return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ "Computer wins!!"
+    else if(computerScore == 5){
+        
+        computerScore = 0;
+        playerScore = 0;
+        return "Computer wins!";
+        
     }
     else{
 
-        return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ "It's a draw!"
+        if(playerSelection == "Rock" &&  computerSelection == "scissors" || playerSelection == "Paper" &&  computerSelection == "rock" || playerSelection == "Scissors" &&  computerSelection == "paper"){  
+            playerScore = playerScore+1;
+            play_Score.textContent = playerScore;
+            pScore.appendChild(play_Score); 
+            return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ playerWins 
+        }
+        else if(playerSelection == "Rock" && computerSelection == "paper" || playerSelection == "Paper" &&  computerSelection == "scissors" || playerSelection == "Scissors" &&  computerSelection == "rock"){ 
+            computerScore = computerScore+1;
+            comp_Score.textContent = computerScore;
+            
+            return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ "Computer wins!!"
+        }
+        else{
+
+            return "Player choose: " + playerSelection +  "\nComputer choose: " + computerSelection + "\n"+ "It's a draw!"
+        }
+        
     }
-  }
-  
-function game(){
-    let winner = "";
-    let playerScore = 0;
-    let ComputerScore = 0;
-
-
-    for (let i = 0; i < 5; i++) {
-
-        const computerSelection = computerPlay();
-        const playerSelection = prompt("Type Rock, paper or Scissors");
-        let result = playRound(playerSelection,computerSelection);
-        console.log(result)
-        if (result.match(playerWins)){
-            playerScore += 1; 
-        }
-        else if(result.match("Computer wins")){
-            ComputerScore += 1;
-        }
-       
-     }
-     if (playerScore>ComputerScore){
-        winner = "The winner is you with " + playerScore + " points";
-     }
-     else if (ComputerScore>playerScore){
-        winner = "The winner is you with " + ComputerScore + " points";
-     }
-     else{
-        winner = "It's a draw!";
-
-     }
-     return winner 
-}
-
-const playerWins = "Congratulations you won!"
-
-console.log(game());
+}  
