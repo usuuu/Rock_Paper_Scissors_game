@@ -1,0 +1,49 @@
+body {
+
+    text-align: center;
+    margin: 0%;
+    background-color: rgb(102, 156, 218);
+
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+    background-color: black;
+    margin: 0;
+   
+}
+p{
+    padding-left: 200px;
+    padding-right: 200px;
+    word-break: break-word;
+    
+    
+}
+#score {
+    display: flex;
+    margin: 0;
+    padding: 60px;
+    justify-content: center;
+    font-size: larger;
+    font-family: 'comic sans ms';
+
+  }
+
+  button{
+      margin: 0;
+      outline: none;
+      border:none;
+      background-color: transparent;
+
+  }
+#result{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 40px;
+    border-radius: 50px;
+    font-size: 25px;
+    word-break: break-word;
+    white-space: pre-line;
+}

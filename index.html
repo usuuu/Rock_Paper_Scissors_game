@@ -2,10 +2,34 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<script src="rock_paper_scissors.js" defer></script>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<title>Rock, Paper, Scissors</title>
 	<body>
-		<script src="rock_paper_scissors.js"></script>
-       
+		<div id= "pagelayout">
+			<h1>Welcome to Rock, Paper, Scissors</h1>
+			<p>Select your choice by clicking one of the buttons below. 
+			   The computer will then randomly pick either rock, paper or scissors.
+			   You will be told who won the round. The first to reach 5 points is the winner! 
+			   Good luck!
+			</p>
+		
+		<div id="container">
+			<button id="Rock"><img src="Images/Rock.jpg" alt="Rock" width ="300" height="400"></button>
+			<button id="Paper"><img src="Images/Paper.jpg" alt="Paper" width ="300"height="400"></button>
+			<button id="Scissors"><img src="Images/Scissors.jpg" alt="Scissors" width ="300" height="400"></button>
+
+		</div>
+		<div id="result">
+		</div>
+		<div id="score"> 
+		Player's Score
+		<div id="players_score"></div>
+		Computer's Score
+		<div id ="computers_score"></div>
+	</div>	
+
+		
 	</body>
 </html>
